@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Formulario Web para crearse un nuevo recurso</title>
+</head>
+<body>
+<h1> Formulario para insertar un músico</h1>
+<form action="http://localhost:8080/practica3-DSS/rest/musicos" method="POST">
+<label for="id">ID</label>
+<br/>
+<input name="id" />
+<br/>
+<label for="nombre">Nombre</label>
+<br/>
+<input name="nombre" />
+<br/>
+<label for="edad">Edad</label>
+<br/>
+<input name="edad" />
+<br/>
+<label for="rol">Rol</label>
+<br/>
+<select name="rol">
+  <option value="Guitarra">Guitarra</option>
+  <option value="Bajo">Bajo</option>
+  <option value="Cantante">Cantante</option>
+  <option value="Bateria">Batería</option>
+  <option value="Piano">Piano</option>
+  <option value="Coros">Coros</option>
+  <option value="Tecnico de Sonido">Técnico de Sonido</option>
+  <option value="Tecnico de luces">Técnico de Luces</option>
+</select>
+<br/>
+<input type="submit" value="Enviar" />
+</form>
+</body>
+</html>
