@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:cliente="http://cliente" xmlns:empleado="http://empleado" xmlns:iberiabilletes="http://iberiabilletes" xmlns:reservavuelos="http://reservavuelos" xmlns:vuelingbilletes="http://vuelingbilletes">
+  <process name="cliente:Cliente">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="cliente:ClienteService" port="ClientePort"/>
+    </provide>
+    <invoke partnerLink="ReservaPL">
+      <service name="reservavuelos:ReservaVuelosService" port="ReservaVuelosPort"/>
+    </invoke>
+  </process>
+  <process name="empleado:Empleado">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="empleado:EmpleadoService" port="EmpleadoPort"/>
+    </provide>
+  </process>
+  <process name="iberiabilletes:IberiaBilletes">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="iberiabilletes:IberiaBilletesService" port="IberiaBilletesPort"/>
+    </provide>
+  </process>
+  <process name="reservavuelos:ReservaVuelos">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="reservavuelos:ReservaVuelosService" port="ReservaVuelosPort"/>
+    </provide>
+    <invoke partnerLink="EmpleadoPL">
+      <service name="empleado:EmpleadoService" port="EmpleadoPort"/>
+    </invoke>
+    <invoke partnerLink="IberiaPL">
+      <service name="iberiabilletes:IberiaBilletesService" port="IberiaBilletesPort"/>
+    </invoke>
+    <invoke partnerLink="VuelingPL">
+      <service name="vuelingbilletes:VuelingBilletesService" port="VuelingBilletesPort"/>
+    </invoke>
+  </process>
+  <process name="vuelingbilletes:VuelingBilletes">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="vuelingbilletes:VuelingBilletesService" port="VuelingBilletesPort"/>
+    </provide>
+  </process>
+</deploy>
